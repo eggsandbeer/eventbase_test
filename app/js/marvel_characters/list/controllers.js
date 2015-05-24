@@ -1,10 +1,15 @@
 var list_controllers = angular.module('marvelCharacters.list.controllers', []);
 
-list_controllers.controller('listController', function($location, $scope, $routeParams, marvelCharactersListAPI) {
+list_controllers.controller('listController', function($location, $scope, $filter, $routeParams, marvelCharactersListAPI) {
   $scope.nameFilter = null;
   $scope.searchTerm = null;
   $scope.loading = true;
   $scope.characterList = [];
+
+  $scope.order = function(predicate, reverse) {
+    var orderBy = $filter('orderBy');
+    $scope.characterList = orderBy($scope.characterList, predicate, reverse);
+  };
 
   $scope.submitSearch = function(){
     $scope.loading = true;
@@ -16,7 +21,7 @@ list_controllers.controller('listController', function($location, $scope, $route
       console.log(error);
       // better error handling needed here.
     });
-  }
+  };
 
   $scope.searchResultsFilter = function (character) {
     var result = new RegExp($scope.nameFilter, 'i');

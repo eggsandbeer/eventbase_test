@@ -11,18 +11,33 @@
     <div class="col-sm-5">
       <h1>{{character.name}}</h1>
       <p>{{character.description}}</p>
-      <p >
-        {{selected}}
-      </p>
+      <div class="panel panel-default">
+        <div class="panel-heading">Selected comic:</div>
+        <div class="panel-body">
+          <h4>{{selected}}</h4>
+        </div>
+      </div>
     </div>
     <div class="col-sm-5">
       <h3>Total Comics Appeared in: {{character.comics.available}}</h3>
-      <ul>
-        <li ng-repeat="comic in character.comics.items" ng-click="select(comic.name)" ng-class="{active: comic.name == selected}">{{comic.name}}</li>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          ng-repeat="comic in character.comics.items"
+          ng-class="{active: comic.name == selected}">
+          {{comic.name}}
+          <br>
+          <div class="btn-group btn-group-xs" role="group" aria-label="Small button group">
+            <button type="button" ng-click="select($index)" class="btn btn-default">Make Active</button>
+            <button type="button" ng-click="delete($index, comic.name)" class="btn btn-default">Delete</button>
+            <button type="button" ng-click="showEdit = !showEdit" class="btn btn-default">Edit</button>
+          </div>
+          <div class="form-group" ng-show="showEdit">
+            <label for="exampleInputEmail1">Comic name:</label>
+            <input type="input" class="form-control" ng-model="comic.name" ng-change="edit(comic.name)" placeholder="Enter new name">
+          </div>
+        </li>
       </ul>
     </div>
-  </div>
-  <div class="row">
-
   </div>
 </div>

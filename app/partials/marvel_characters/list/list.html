@@ -8,11 +8,20 @@
         </span>
       </div><!-- /input-group -->
     </div><!-- /input-group -->
-    <div class="col-lg-6">
+    <div class="col-lg-4">
       <div class="input-group">
         <span class="input-group-addon" id="sizing-addon1">@</span>
         <input class="form-control" type="text" ng-model="nameFilter" placeholder="Filter Down Search Results"/>
       </div><!-- /input-group -->
+    </div>
+    <div class="col-lg-2">
+      <div class="btn-group" ng-class='{open: open}'>
+        <button class="btn btn-default">Sort order</button>
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" ng-click='open=!open'><span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="" ng-click="reverse=!reverse;order('name',reverse)">Toggle Names Alphabetical</a></li>
+        </ul>
+      </div>
     </div>
   </div>
   <div class="row">
