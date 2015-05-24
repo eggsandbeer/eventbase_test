@@ -1,0 +1,7 @@
+.active {
+  color:red
+}
+.list-character-container img,
+.details-character-container img {
+  width: 100%;
+}

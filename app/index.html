@@ -1,7 +1,7 @@
 <!doctype html>
   <head>
     <meta charset="utf-8">
-    <title>F-1 Feeder</title>
+    <title></title>
     <meta name="viewport" content="width=device-width">
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
@@ -13,11 +13,27 @@
     <!-- endbuild -->
   </head>
   <body ng-app="PayByPhoneApp">
-    <ng-view></ng-view>
+    <div class="container-fluid">
+      <div class="page-header">
+        <h1>Hello paybyphone <small>Let's play with the Marvel comics API and angular</small></h1>
+      </div>
+
+      <ng-view></ng-view>
+    </div>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+
+    <script src="js/marvel_characters/module.js"></script>
+    <script src="js/marvel_characters/details/factory.js"></script>
+    <script src="js/marvel_characters/details/controllers.js"></script>
+    <script src="js/marvel_characters/list/factory.js"></script>
+    <script src="js/marvel_characters/list/controllers.js"></script>
+
     <script src="js/app.js"></script>
-    <script src="js/services.js"></script>
-    <script src="js/controllers.js"></script>
+
+    <script type="text/javascript">
+      window.MARVEL_KEY = "3de04631c097db314166c09803370b6e"
+    </script>
+
   </body>
 </html>

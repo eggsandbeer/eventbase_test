@@ -1,0 +1,28 @@
+<div class="details-character-container">
+
+  <div class="spinner" ng-show="loading">LOADING</div>
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="thumbnail">
+        <img src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" alt="" />
+      </div>
+      <a href="#/characters/">Back to List</a>
+    </div>
+    <div class="col-sm-5">
+      <h1>{{character.name}}</h1>
+      <p>{{character.description}}</p>
+      <p >
+        {{selected}}
+      </p>
+    </div>
+    <div class="col-sm-5">
+      <h3>Total Comics Appeared in: {{character.comics.available}}</h3>
+      <ul>
+        <li ng-repeat="comic in character.comics.items" ng-click="select(comic.name)" ng-class="{active: comic.name == selected}">{{comic.name}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+
+  </div>
+</div>
