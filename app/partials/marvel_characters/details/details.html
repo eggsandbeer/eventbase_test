@@ -25,12 +25,13 @@
           class="list-group-item"
           ng-repeat="comic in character.comics.items"
           ng-class="{active: comic.name == selected}">
-          {{comic.name}}
-          <br>
+          <p class="text">
+            {{comic.name}}
+          </p>
           <div class="btn-group btn-group-xs" role="group" aria-label="Small button group">
-            <button type="button" ng-click="select($index)" class="btn btn-default">Make Active</button>
-            <button type="button" ng-click="delete($index, comic.name)" class="btn btn-default">Delete</button>
-            <button type="button" ng-click="showEdit = !showEdit" class="btn btn-default">Edit</button>
+            <button type="button" ng-click="select($index)" class="btn btn-default active-button">Make Active</button>
+            <button type="button" ng-click="delete($index, comic.name)" class="btn btn-default delete-button">Delete</button>
+            <button type="button" ng-click="showEdit = !showEdit" class="btn btn-default edit-button">Edit</button>
           </div>
           <div class="form-group" ng-show="showEdit">
             <label for="exampleInputEmail1">Comic name:</label>

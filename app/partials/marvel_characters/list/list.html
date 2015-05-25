@@ -2,16 +2,16 @@
   <div class="row">
     <div class="col-lg-6">
       <div class="input-group">
-        <input type="text" class="form-control" ng-model="searchTerm" placeholder="Search Marvel API for characters..." />
+        <input type="text" id="searchCharacters" name="searchCharacters" class="form-control" ng-model="searchTerm" placeholder="Search Marvel API for characters..." />
         <span class="input-group-btn">
-          <button class="btn btn-primary" ng-click="submitSearch()" ng-disabled="loading === true" type="button">Search Marvel API</button>
+          <button id="searchCharactersSubmitButton" class="btn btn-primary" ng-click="submitSearch()" ng-disabled="loading === true" type="button">Search Marvel API</button>
         </span>
       </div><!-- /input-group -->
     </div><!-- /input-group -->
     <div class="col-lg-4">
       <div class="input-group">
         <span class="input-group-addon" id="sizing-addon1">@</span>
-        <input class="form-control" type="text" ng-model="nameFilter" placeholder="Filter Down Search Results"/>
+        <input class="form-control" name="filterCharacters" name="filterCharacters" type="text" ng-model="nameFilter" placeholder="Filter Down Search Results"/>
       </div><!-- /input-group -->
     </div>
     <div class="col-lg-2">
