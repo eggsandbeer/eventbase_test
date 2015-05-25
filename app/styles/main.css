@@ -2,3 +2,7 @@
 .details-character-container img {
   width: 100%;
 }
+.spinner {
+  font-size: 40px;
+  font-weight: 900;
+}
