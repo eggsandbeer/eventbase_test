@@ -1,5 +1,5 @@
 'use strict';
-describe('marvelCharacters', function(){
+describe('Marvel Characters Module', function(){
 
   beforeEach(module('marvelCharacters'));
 
@@ -7,9 +7,9 @@ describe('marvelCharacters', function(){
 
     beforeEach(module('marvelCharacters.details.controllers'));
 
-    describe('the details controller', function(){
+    describe('-- details controlle method', function(){
 
-      var url = 'http://gateway.marvel.com:80/v1/public/characters?apikey=undefined';
+      var url = 'http://gateway.marvel.com:80/v1/public/characters/1009718?apikey=undefined';
 
       var detailsController, $httpBackend, $rootScope, scope, $routeParams, requestHandler, data_stub;
 
@@ -28,13 +28,17 @@ describe('marvelCharacters', function(){
           "data": {
             "results": [
               {
-                "name": "Wolverine"
-              },
-              {
-                "name": "Gambit"
-              },
-              {
-                "name": "Beast"
+                "name": "Wolverine",
+                "comics": {
+                  "items": [
+                    {
+                      "name": "5 Ronin (Hardcover)"
+                    },
+                    {
+                      "name": "Alpha Flight (1983) #17"
+                    }
+                  ]
+                }
               }
             ]
           }
@@ -44,7 +48,9 @@ describe('marvelCharacters', function(){
         detailsController = function() {
           return $controller('detailsController', {
             '$scope' : scope,
-            '$routeParams': {}
+            '$routeParams': {
+              'id': 1009718
+            }
           });
         };
       }));
@@ -55,9 +61,40 @@ describe('marvelCharacters', function(){
       });
 
       it('should be defined', function(){
-        expect(detailsController).toBeDefined();
+        var controller = detailsController();
+        expect(controller).toBeDefined();
+        $httpBackend.flush();
       });
 
+      it('should return the character details response on load', function(){
+        var controller = detailsController();
+        $httpBackend.expect('GET', url).respond(data_stub);
+        $httpBackend.flush();
+        expect(scope.character.name).toBe('Wolverine');
+      });
+
+      it('should define the active comic scope', function(){
+        var controller = detailsController();
+        $httpBackend.flush();
+        scope.select(1)
+        expect(scope.selected).toBe('Alpha Flight (1983) #17');
+      });
+
+      it('should change the comic lists active scope', function(){
+        var controller = detailsController();
+        $httpBackend.flush();
+        scope.edit('Something else')
+        expect(scope.selected).toBe('Something else');
+      });
+
+      it('should delete comics from the list scope', function(){
+        var controller = detailsController();
+        $httpBackend.flush();
+        scope.delete(0 , '5 Ronin (Hardcover)');
+
+        expect(scope.selected).toBe('Alpha Flight (1983) #17');
+        expect(scope.character.comics.items.length).toBe(1);
+      });
     });
   });
 });

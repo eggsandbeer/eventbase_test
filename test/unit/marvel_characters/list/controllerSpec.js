@@ -65,18 +65,20 @@ describe('marvelCharacters', function(){
       });
 
       it('should be defined', function(){
-        expect(listController).toBeDefined();
+        var controller = listController();
+        expect(controller).toBeDefined();
+        $httpBackend.flush();
       });
 
-      it('should return a list of characters on load', function () {
+      it('should return a list of characters on load and define the characterList scope', function () {
         var controller = listController();
         $httpBackend.expect('GET', url).respond(data_stub);
         $httpBackend.flush();
         expect(scope.characterList.length).toBe(3);
-        expect(scope.characterList[0].name).toBe('Wolverine')
+        expect(scope.characterList[0].name).toBe('Wolverine');
       });
 
-      it('should return search results when required', function(){
+      it('should return search results when required and define the characterList scope', function(){
         var controller = listController();
         scope.searchTerm = 'Wolverine';
         scope.submitSearch();
