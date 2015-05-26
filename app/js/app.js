@@ -1,8 +1,10 @@
-angular.module('PayByPhoneApp', [
-  'marvelCharacters',
+angular.module('EventBaseApp', [
+  'overview',
+  'schedule',
+  // 'details',
   'ngRoute'
 ]).
 config(['$routeProvider', function($routeProvider) {
   'use strict';
-  $routeProvider.otherwise({ redirectTo: '/characters' });
-}])
+  $routeProvider.otherwise({ redirectTo: '/overview' });
+}]);

@@ -1,0 +1,25 @@
+<h1>DATES</h1>
+<form ng-submit="submit()">
+  DATE
+  <select ng-model="date" name="">
+    <!-- Didn't realize until WAY too late that this should be the dynamic response obj from the overview call  -->
+    <option value="2014-06-21">2014-06-21 </option>
+    <option value="2014-06-27">2014-06-27 </option>
+    <option value="2014-07-03">2014-07-03</option>
+    <option value="2014-07-05">2014-07-05</option>
+  </select>
+  <br>
+  CHUNK
+  <select ng-model="chunk" class="" name="">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+  <br>
+  <button class="btn btn-primary" type="submit" name="button">SUBMIT</button>
+</form>
+
+<div>
+  {{event.title}}
+</div>
